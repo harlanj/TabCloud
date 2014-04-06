@@ -48,4 +48,13 @@ public class TCUser {
     public void moveWindow(int oldIndex, int newIndex) {
     	this.window.add(newIndex, this.window.remove(oldIndex));
     }
+
+    public void emailTabs(int index, String str) {
+        int[] tabs;
+        tabs = new int[this.window(index).tabs.length]
+        for (int i = 0; i < this.window(index).tabs.length; i++) {
+            tabs.push(this.window(index).tabs[i].url);
+        }
+        // Have the tabs. Open Gmail App and append list to email body
+    }
 }

@@ -299,7 +299,7 @@ $(function() {
       for (var i = 0; i < TCWindows[windowId].tabs.length; i++) {
         tabs.push(TCWindows[windowId].tabs[i].url)
       };
-      var gmailUrl = baseGmailUrl + '&su=' + TCWindows[windowId].name + ' Tab List&body=' + tabs
+      var gmailUrl = baseGmailUrl + '&su=' + TCWindows[windowId].name + '&body=' + tabs.toString().replace(",", "\n")
       chrome.windows.create({
         url: gmailUrl,
         left: 20,
