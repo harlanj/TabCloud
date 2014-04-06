@@ -293,16 +293,23 @@ $(function() {
     });
 
     $('.windowemail').live('click', function(e) {
-      var parentTab = TCWindows[windowId].name;
-      var tabLinks = [];
-      parentTab.tabs.forEach(function(name) {
-        tabLinks.push({
-          link: name.url
-        });
-      });
+      var baseGmailUrl = "https://mail.google.com/mail/?view=cm&fs=1&tf=1";
       var windowId = parseInt($(this).parent().parent().attr('id').substring(4), 10);
-      var body = TCWindows[windowId];
-      var subject = TCWindows[windowId].name;
+      var tabs = []
+      for (var i = 0; i < TCWindows[windowId].tabs.length; i++) {
+        tabs.push(TCWindows[windowId].tabs[i].url)
+      };
+      var gmailUrl = baseGmailUrl + '&su=' + TCWindows[windowId].name + ' Tab List&body=' + tabs
+      chrome.windows.create({
+        url: gmailUrl,
+        left: 20,
+        top: 30,
+        width: 700,
+        height: 600
+      });
+      chrome.extension.sendRequest({
+        tabs: TCWindows[windowId].name
+      });
     });
 
     $('.windowopen').live('click', function(e) {
