@@ -3,3 +3,7 @@ Tabcloud
 Chrome extension in folder "chrome"
 
 Google App Engine Java eclipse project in folder "appengine-java"
+
+KNOWN ERRORS
+
+-links with email references stop remaining links to be inserted into the body
